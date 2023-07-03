@@ -1,0 +1,5 @@
+import visible?:"com.mygdx.projects.tasks.Visible"
+
+root
+    sequence
+        visible?
