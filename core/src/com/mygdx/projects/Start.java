@@ -10,6 +10,8 @@ import com.mygdx.projects.utils.Screenshot;
 
 public class Start extends Game {
 
+    String currentPackage = "";
+
     public Start() {
     }
 
@@ -27,7 +29,7 @@ public class Start extends Game {
     @Override
     public void render() {
         if (Gdx.input.isKeyJustPressed(Input.Keys.PRINT_SCREEN)) {
-            Screenshot.save();
+            Screenshot.save(currentPackage);
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             if (getScreen() != null)
@@ -44,5 +46,12 @@ public class Start extends Game {
         Resource.init();
         //Resource.instance().loadDefaultTextures();
         setScreen(new SphereMode());
+    }
+
+    @Override
+    public void setScreen(Screen screen) {
+        super.setScreen(screen);
+        String[] name = screen.getClass().getPackage().getName().split("\\.");
+        currentPackage = name[name.length-1];
     }
 }

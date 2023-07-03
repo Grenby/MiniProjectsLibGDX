@@ -15,11 +15,15 @@ public final class Screenshot {
     }
 
     public static void save() {
+        save("default");
+    }
+
+    public static void save(String className) {
         FileHandle fh;
         do {
-            fh = new FileHandle(Gdx.files.getLocalStoragePath() + "screenshots/screenshot_" + count++ + ".png");
+            fh = new FileHandle(Gdx.files.getLocalStoragePath() + "core/assets/screenshots/"+className+"/screenshot_" + count++ + ".png");
         } while (fh.exists());
-        Resource.LOG.info("Screenshot", "screenshot_" + (count - 1) + ".png");
+        Resource.LOG.info("Screenshot", className+"/screenshot_" + (count - 1) + ".png");
         Pixmap pixmap = Pixmap.createFromFrameBuffer(0, 0, Gdx.graphics.getBackBufferWidth(), Gdx.graphics.getBackBufferHeight());
         for (int i = 0; i < pixmap.getHeight() / 2; i++) {
             for (int j = 0; j < pixmap.getWidth(); j++) {
@@ -31,5 +35,6 @@ public final class Screenshot {
         PixmapIO.writePNG(fh, pixmap);
         pixmap.dispose();
     }
+
 
 }
