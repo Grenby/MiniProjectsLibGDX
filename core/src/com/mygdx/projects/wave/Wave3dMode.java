@@ -2,7 +2,6 @@ package com.mygdx.projects.wave;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.utils.FirstPersonCameraController;
@@ -14,18 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.projects.MyScreen;
 import com.mygdx.projects.Resource;
 import com.mygdx.projects.utils.FPSui;
 
 import java.util.Objects;
 
-public class Wave3dMode extends ScreenAdapter {
-
-    final int WEIGHT = Gdx.graphics.getWidth();
-    final int HEIGHT = Gdx.graphics.getHeight();
-
-    final float W = 100f;
-    final float H = W / WEIGHT * HEIGHT;
+public class Wave3dMode extends MyScreen {
 
     float energy = 0;
 
@@ -167,6 +161,7 @@ public class Wave3dMode extends ScreenAdapter {
 
     @Override
     public void show() {
+        resize(100f);
         controller = new FirstPersonCameraController(camera);
         Gdx.input.setInputProcessor(new InputMultiplexer(ui, controller));
 

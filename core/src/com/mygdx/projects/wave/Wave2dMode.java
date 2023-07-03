@@ -2,7 +2,6 @@ package com.mygdx.projects.wave;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -13,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.projects.MyScreen;
 import com.mygdx.projects.Resource;
 import com.mygdx.projects.utils.FPSui;
 
@@ -20,13 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Wave2dMode implements Screen {
-
-    final int WEIGHT = Gdx.graphics.getWidth();
-    final int HEIGHT = Gdx.graphics.getHeight();
-
-    final float W = 1000f;
-    final float H = W / WEIGHT * HEIGHT;
+public class Wave2dMode extends MyScreen {
 
     float energy = 0;
 
@@ -162,6 +156,7 @@ public class Wave2dMode implements Screen {
 
     @Override
     public void show() {
+        resize(1000f);
         Gdx.input.setInputProcessor(new InputMultiplexer(ui));
         initUI();
         camera.position.set(0, 0, 0);
@@ -208,30 +203,5 @@ public class Wave2dMode implements Screen {
 
         renderer.end();
         ui.draw();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
     }
 }

@@ -2,8 +2,6 @@ package com.mygdx.projects.mazeGen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ai.pfa.Connection;
 import com.badlogic.gdx.ai.pfa.DefaultConnection;
 import com.badlogic.gdx.ai.pfa.Graph;
@@ -14,16 +12,14 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
+import com.mygdx.projects.MyScreen;
 import com.mygdx.projects.utils.garphs.GraphImpl;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MazeMode extends InputAdapter implements Screen {
-
-    public static int WIDTH = Gdx.graphics.getWidth();
-    public static int HEIGHT = Gdx.graphics.getHeight();
+public class MazeMode extends MyScreen {
 
     private final Set<Integer> keysForUpdate = new HashSet<>(Arrays.asList(
             Input.Keys.W, Input.Keys.D, Input.Keys.S, Input.Keys.A, Input.Keys.UP, Input.Keys.DOWN

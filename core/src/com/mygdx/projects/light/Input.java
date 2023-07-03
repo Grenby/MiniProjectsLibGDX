@@ -1,25 +1,23 @@
-package com.mygdx.projects;
+package com.mygdx.projects.light;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
 
-public class MyScreen implements Screen, InputProcessor {
+public class Input implements InputProcessor {
 
-    protected int WIDTH = Gdx.graphics.getWidth();
-    protected int HEIGHT = Gdx.graphics.getHeight();
+    InputInterface screen;
 
-    protected float W = 10f;
-    protected float H = W / WIDTH * HEIGHT;
-
-    protected void resize(float w) {
-        W = w;
-        H = W / WIDTH * HEIGHT;
+    Input(InputInterface screen) {
+        this.screen = screen;
     }
-
 
     @Override
     public boolean keyDown(int keycode) {
+        switch (keycode) {
+            case com.badlogic.gdx.Input.Keys.T:
+                screen.press();
+                break;
+        }
         return false;
     }
 
@@ -35,6 +33,8 @@ public class MyScreen implements Screen, InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        //0-лкм, 1-пкм
+        screen.addPoint(screenX, Gdx.graphics.getHeight() - screenY, button);
         return false;
     }
 
@@ -58,38 +58,4 @@ public class MyScreen implements Screen, InputProcessor {
         return false;
     }
 
-    @Override
-    public void show() {
-
-    }
-
-    @Override
-    public void render(float delta) {
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
 }

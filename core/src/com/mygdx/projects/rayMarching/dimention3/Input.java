@@ -1,22 +1,14 @@
-package com.mygdx.projects;
+package com.mygdx.projects.rayMarching.dimention3;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
 
-public class MyScreen implements Screen, InputProcessor {
+public class Input implements InputProcessor {
 
-    protected int WIDTH = Gdx.graphics.getWidth();
-    protected int HEIGHT = Gdx.graphics.getHeight();
+    RayM3Screen screen;
 
-    protected float W = 10f;
-    protected float H = W / WIDTH * HEIGHT;
-
-    protected void resize(float w) {
-        W = w;
-        H = W / WIDTH * HEIGHT;
+    Input(RayM3Screen screen) {
+        this.screen = screen;
     }
-
 
     @Override
     public boolean keyDown(int keycode) {
@@ -35,6 +27,7 @@ public class MyScreen implements Screen, InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        screen.choose(screenX, screenY, button);
         return false;
     }
 
@@ -50,46 +43,12 @@ public class MyScreen implements Screen, InputProcessor {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
+        screen.moved(screenX, screenY);
         return false;
     }
 
     @Override
     public boolean scrolled(float amountX, float amountY) {
         return false;
-    }
-
-    @Override
-    public void show() {
-
-    }
-
-    @Override
-    public void render(float delta) {
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
     }
 }
